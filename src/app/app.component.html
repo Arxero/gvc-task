@@ -1,0 +1,66 @@
+<main>
+  <div class="btn-mode-wrapper">
+    <a mat-raised-button href="https://github.com/Arxero/gvc-task" color="primary" target="_blank">GutHub</a>
+    <button mat-raised-button color="primary" class="btn-mode" (click)="onEditMode()">{{ isEditMode ? 'Preview' : 'Edit' }} Mode</button>
+  </div>
+  <table mat-table [dataSource]="events">
+
+    <ng-container matColumnDef="eventID">
+      <th mat-header-cell *matHeaderCellDef>EventID</th>
+      <td mat-cell *matCellDef="let element">{{ element.eventID }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="eventName">
+      <th mat-header-cell *matHeaderCellDef>EventName</th>
+      <td [style.backgroundColor]="element.background" mat-cell *matCellDef="let element" (click)="onRowEdit(element.eventID)">
+        <span *ngIf="!element.isEditMode">{{ element.eventName }}</span>
+        <app-table-input *ngIf="element.isEditMode" [event]="element" [eventEditableProperty]="eventEditableProperties.EventName"></app-table-input>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="oddsForFirstTeam">
+      <th mat-header-cell *matHeaderCellDef>OddsForFirstTeam</th>
+      <td [style.backgroundColor]="element.background" mat-cell *matCellDef="let element" (click)="onRowEdit(element.eventID, eventEditableProperties.OddsForFirstTeam)">
+        <span *ngIf="!element.isEditMode">{{ element.oddsForFirstTeamVM }}</span>
+        <app-table-input *ngIf="element.isEditMode" [event]="element" [eventEditableProperty]="eventEditableProperties.OddsForFirstTeam"></app-table-input>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="oddsForDraw">
+      <th mat-header-cell *matHeaderCellDef>OddsForDraw</th>
+      <td [style.backgroundColor]="element.background" mat-cell *matCellDef="let element" (click)="onRowEdit(element.eventID, eventEditableProperties.OddsForDraw)">
+        <span *ngIf="!element.isEditMode">{{ element.oddsForDrawVM }}</span>
+        <app-table-input *ngIf="element.isEditMode" [event]="element" [eventEditableProperty]="eventEditableProperties.OddsForDraw"></app-table-input>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="oddsForSecondTeam">
+      <th mat-header-cell *matHeaderCellDef>OddsForSecondTeam</th>
+      <td [style.backgroundColor]="element.background" mat-cell *matCellDef="let element" (click)="onRowEdit(element.eventID, eventEditableProperties.OddsForSecondTeam)">
+        <span *ngIf="!element.isEditMode">{{ element.oddsForSecondTeamVM }}</span>
+        <app-table-input *ngIf="element.isEditMode" [event]="element" [eventEditableProperty]="eventEditableProperties.OddsForSecondTeam"></app-table-input>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="eventStartDate">
+      <th mat-header-cell *matHeaderCellDef>EventStartDate</th>
+      <td [style.backgroundColor]="element.background" mat-cell *matCellDef="let element" (click)="onRowEdit(element.eventID)">
+        <span  *ngIf="!element.isEditMode">{{ element.eventStartDateVM }}</span>
+        <app-table-input *ngIf="element.isEditMode" [event]="element" [eventEditableProperty]="eventEditableProperties.EventStartDate"></app-table-input>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" class="btn-action" (click)="onDeleteEvent(element.eventID)">Delete</button>
+        <button mat-raised-button color="primary" class="btn-action" (click)="onSaveEvent(element.eventID)">Save</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <button mat-raised-button color="primary" class="btn-mode" *ngIf="isEditMode" (click)="onAddNew()">Add New</button>
+</main>

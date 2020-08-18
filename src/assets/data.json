@@ -1,0 +1,27 @@
+[
+  {
+    "eventID": 1,
+    "eventName": "Liverpool - Juventuns",
+    "oddsForFirstTeam": 1.95387,
+    "oddsForDraw": 3.1534876,
+    "oddsForSecondTeam": 2.203985,
+    "eventStartDate" : "2020-12-25T22:00:00.000Z"
+  },
+  {
+    "eventID": 2,
+    "eventName": "Grigor Dimitrov - Rafael Nadal",
+    "oddsForFirstTeam": 2.003498,
+    "oddsForDraw": 3.059384,
+    "oddsForSecondTeam": 2.7023895,
+    "eventStartDate" : "2020-09-06T19:00:00.000Z"
+  },
+  {
+    "eventID": 3,
+    "eventName": "Barcelona - Ludogorets",
+    "oddsForFirstTeam": 1.013498,
+    "oddsForDraw": 4.202398,
+    "oddsForSecondTeam": 15.20238,
+    "eventStartDate" : "1055-12-31T18:30:00.000Z"
+  }
+]
+
